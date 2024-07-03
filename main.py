@@ -8,7 +8,7 @@ pygame.init()
 WIDTH, HEIGHT = 640, 480
 SNAKE_SIZE = 10
 FOOD_SIZE = 5
-SPEED = 20
+SPEED = 15
 
 # Set up the game window
 screen = pygame.display.set_mode((WIDTH, HEIGHT))
