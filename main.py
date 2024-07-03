@@ -17,6 +17,7 @@ pygame.display.set_caption("Snake Game")
 # Define some colors
 WHITE = (255, 255, 255)
 BLACK = (0, 0, 0)
+TEAL = (0, 128, 128)
 
 # Create a snake as a list of coordinates
 snake_coords = [(100, 100)]
@@ -29,6 +30,8 @@ food_y = random.randint(0, HEIGHT - FOOD_SIZE) // SNAKE_SIZE * SNAKE_SIZE
 # Set up the score and game state
 score = 0
 game_over = False
+font = pygame.font.SysFont('Arial', 24)
+
 while not game_over:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -74,10 +77,14 @@ while not game_over:
         game_over = True
 
     # Redraw the game board
-    screen.fill(BLACK)
+    screen.fill(TEAL)
     for x, y in snake_coords:
         pygame.draw.rect(screen, WHITE, (x, y, SNAKE_SIZE, SNAKE_SIZE))
     pygame.draw.rect(screen, WHITE, (food_x, food_y, FOOD_SIZE, FOOD_SIZE))
+
+    # Render the score
+    score_text = font.render(f'Score: {score}', True, WHITE)
+    screen.blit(score_text, (WIDTH - 100, 50))
 
     # Update the display
     pygame.display.flip()
